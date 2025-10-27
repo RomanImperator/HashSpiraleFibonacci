@@ -1,8 +1,8 @@
 // trova il placeholder e inietta lì il componente HTML
-fetch("components/theme-toggle.html")
+fetch("components/menu.html")
   .then(res => res.text())
   .then(markup => {
-    const mountPoint = document.getElementById("theme-toggle-mount");
+    const mountPoint = document.getElementById("theme-menu-mount");
     mountPoint.innerHTML = markup;
 
     // molto importante:

@@ -92,6 +92,45 @@
   --text: #e7eaf6;
 }
 
+button {
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+.menu{
+    display: flex;              /* Allinea gli elementi in orizzontale */
+    justify-content: center;    /* Centra orizzontalmente */
+    gap: 20px;                  /* Spazio tra i bottoni */
+    position: fixed;            /* Posizionamento libero sulla pagina */
+    top: 20px;                  /* Distanza dal bordo superiore */
+    left: 50%;                  /* Posiziona il centro del div al centro della pagina */
+    transform: translateX(-50%);/* Corregge lo spostamento per centrare perfettamente */
+}
+
 /* applica colori di pagina */
 html, body {
   background: var(--bg);
