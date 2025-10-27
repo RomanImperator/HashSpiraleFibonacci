@@ -1,0 +1,100 @@
+/* testo accessibile ma invisibile */
+.theme-toggle-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* contenitore tondo del toggle */
+.theme-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+/* checkbox: cliccabile ma invisibile */
+.theme-toggle > input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* icone */
+.theme-toggle svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  color: var(--text);
+  position: absolute;
+}
+
+/* sole inizialmente visibile */
+.icon-sun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* luna inizialmente nascosta */
+.icon-moon {
+  opacity: 0;
+  transform: scale(0.5) rotate(-20deg);
+  color: #9924e7; /* blu chiaro brillante */
+  filter: drop-shadow(0 0 5px rgba(150,170,255,0.5));
+}
+
+/* HOVER carino */
+.theme-toggle:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* QUANDO è in dark mode (checkbox checked):
+   - nascondi SOLE
+   - mostra LUNA
+*/
+.theme-toggle > input:checked ~ .icon-sun {
+  opacity: 0;
+  transform: scale(0.5) rotate(20deg);
+}
+
+.theme-toggle > input:checked ~ .icon-moon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Variabili tema */
+:root {
+  --bg: #ffffff;
+  --text: #0f1222;
+  --card: #f4f6fb;
+  --accent: #6b74ff;
+  --border: rgba(0,0,0,0.08);
+}
+
+:root.dark {
+  --bg: #0f1222;
+  --text: #e7eaf6;
+}
+
+/* applica colori di pagina */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
