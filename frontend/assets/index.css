@@ -28,11 +28,62 @@ button:active {
 }
 
 .menu{
-    display: flex;              /* Allinea gli elementi in orizzontale */
-    justify-content: center;    /* Centra orizzontalmente */
-    gap: 20px;                  /* Spazio tra i bottoni */
-    position: fixed;            /* Posizionamento libero sulla pagina */
-    top: 20px;                  /* Distanza dal bordo superiore */
-    left: 50%;                  /* Posiziona il centro del div al centro della pagina */
-    transform: translateX(-50%);/* Corregge lo spostamento per centrare perfettamente */
+  display: flex;              /* Allinea gli elementi in orizzontale */
+  justify-content: center;    /* Centra orizzontalmente */
+  gap: 20px;                  /* Spazio tra i bottoni */
+  position: fixed;            /* Posizionamento libero sulla pagina */
+  top: 20px;                  /* Distanza dal bordo superiore */
+  left: 50%;                  /* Posiziona il centro del div al centro della pagina */
+  transform: translateX(-50%);/* Corregge lo spostamento per centrare perfettamente */
+}
+
+:root {
+  --phi: 1.61803398875;
+  --gold-soft: #fde68a;
+  --gold-mid: #fbbf24;
+  --gold-strong: #f97316;
+  --night-900: #020617;
+  --night-700: #0f172a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fbfbfb;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+
+.golden-container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: absolute;
+  top : 175px;
+  left : auto;
+}
+
+
+.rotate {
+  animation: rotate 20s linear infinite;
+  transform-origin: 500px 500px;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }

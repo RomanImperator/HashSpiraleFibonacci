@@ -6,7 +6,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip-path: inset(50%);
   border: 0;
 }
 
@@ -30,7 +30,7 @@
 .theme-toggle > input {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  opacity: 0; /*ciò che lo rende invisibile*/
   cursor: pointer;
   margin: 0;
 }
@@ -55,11 +55,11 @@
 .icon-moon {
   opacity: 0;
   transform: scale(0.5) rotate(-20deg);
-  color: #9924e7; /* blu chiaro brillante */
+  color: #9924e7;
   filter: drop-shadow(0 0 5px rgba(150,170,255,0.5));
 }
 
-/* HOVER carino */
+/* HOVER con ombra */
 .theme-toggle:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
@@ -92,6 +92,8 @@
   --text: #e7eaf6;
 }
 
+/*Stile bottone*/
+
 button {
   padding: 17px 40px;
   border-radius: 50px;
@@ -120,6 +122,8 @@ button:active {
   transform: translateY(10px);
   transition: 100ms;
 }
+
+/*Fine stile bottone*/
 
 .menu{
     display: flex;              /* Allinea gli elementi in orizzontale */
