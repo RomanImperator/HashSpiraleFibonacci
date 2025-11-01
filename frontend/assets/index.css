@@ -13,9 +13,9 @@ button {
 
 button:hover {
   letter-spacing: 3px;
-  background-color: hsl(261deg 80% 48%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: --ring 0px 7px 29px 0px;
 }
 
 button:active {
@@ -44,6 +44,8 @@ button:active {
   --gold-strong: #f97316;
   --night-900: #020617;
   --night-700: #0f172a;
+  --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
 }
 
 body {
@@ -86,4 +88,26 @@ main {
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+.text-container {
+  text-align: center;
+}
+
+.Fibonacci-text {
+  font-weight: 300;
+  font-size: clamp(2.5rem, 10vw, 8rem);
+  position: relative;
+  color: var(--accent);
+  text-shadow: 0 0 5px --accent-2, 0 0 15px --accent-2, 0 0 30px --accent-2;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.Fibonacci-text span {
+  display: inline-block;
+  position: relative;
+  min-width: 0.5ch;
+  will-change: contents;
 }

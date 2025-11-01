@@ -20,7 +20,7 @@
   height: 3rem;
   border-radius: 999px;
   background-color: var(--card);
-  color: var(--text);
+  color: var(--accent);
   border: 1px solid var(--border);
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   position: relative;
@@ -49,13 +49,14 @@
 .icon-sun {
   opacity: 1;
   transform: scale(1) rotate(0deg);
+  color: currentColor;
 }
 
 /* luna inizialmente nascosta */
 .icon-moon {
   opacity: 0;
   transform: scale(0.5) rotate(-20deg);
-  color: #9924e7;
+  color: currentColor;
   filter: drop-shadow(0 0 5px rgba(150,170,255,0.5));
 }
 
@@ -80,16 +81,25 @@
 
 /* Variabili tema */
 :root {
-  --bg: #ffffff;
-  --text: #0f1222;
-  --card: #f4f6fb;
-  --accent: #6b74ff;
-  --border: rgba(0,0,0,0.08);
+  --bg: #fffdf6;
+  --text: #0e0e0b;
+  --card: #fff8e1;
+  --accent: #b7791f;
+  --accent-2: #7c3e12;
+  --border: #e9dfc8;
+  --muted: #a58d69;
+  --ring: #f59e0b;
 }
 
 :root.dark {
   --bg: #0f1222;
-  --text: #e7eaf6;
+  --text: #f3e8c9;
+  --card: #1b1f33;
+  --accent: #fbbf24;
+  --accent-2: #f59e0b;
+  --border: #2a2f45;
+  --muted: #c8b78f;
+  --ring: #fbbf24;
 }
 
 /*Stile bottone*/
@@ -109,9 +119,9 @@ button {
 
 button:hover {
   letter-spacing: 3px;
-  background-color: hsl(261deg 80% 48%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: --ring 0px 7px 29px 0px;
 }
 
 button:active {
