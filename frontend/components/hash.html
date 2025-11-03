@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci Hash – Input</title>
+
+    <!-- Stili già usati nel progetto -->
+    <link rel="stylesheet" href="../assets/index.css" />
+    <link rel="stylesheet" href="../assets/hash.css" />
+    <!-- I font sono già preconnessi su index.html, vanno bene anche così -->
+  </head>
+
+  <body>
+    <main>
+      <div id="theme-menu-mount"></div>
+
+      <div class="card">
+        <h1>Inserisci il plaintext</h1>
+        <p class="muted">Questo testo verrà usato per calcolare l’hash di Fibonacci.</p>
+
+        <form id="hash-form">
+          <textarea id="plaintext" name="plaintext" placeholder="Scrivi qui..." required></textarea>
+
+          <div class="actions">
+            <button type="button" class="btn" id="clear">Pulisci</button>
+            <button type="submit" class="btn primary">Invia a backend</button>
+          </div>
+          <div id="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Inietta il menu e attiva il toggle tema -->
+    <script src="../src/inject-menu.js" defer></script>
+    <!-- Logica del form / collegamento al backend -->
+    <script src="../src/hash.js" defer></script>
+  </body>
+</html>
