@@ -5,6 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="assets/index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+        <!-- Preconnect: migliora le performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Inter (400/500/600/700) + Playfair Display (600/800) -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
 
         <title>HashGoldenSpiral</title>
 
@@ -15,12 +23,55 @@
     </head>
 
     <body>
-        <div id="theme-toggle-mount"></div>
+        
         <main>
+            <div id="theme-menu-mount"></div>
+
+            <div class="golden-container">
+                <svg viewBox="0 0 1000 1000" style="width:100%; height:auto;">
+                    <g class="rotate">
+                    <!-- cerchi dal più piccolo al più grande -->
+                    <circle cx="596.9674" cy="527.3052" r="2.0100" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.8750"></circle>
+                    <circle cx="596.4408" cy="528.4304" r="3.2522" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.8500"></circle>
+                    <circle cx="598.2988" cy="527.6635" r="5.2622" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.8250"></circle>
+                    <circle cx="595.2439" cy="526.5478" r="8.5145" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.8000"></circle>
+                    <circle cx="597.6692" cy="531.2178" r="13.7767" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.7750"></circle>
+                    <circle cx="599.8798" cy="522.9953" r="22.2912" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.7500"></circle>
+                    <circle cx="588.2554" cy="530.3894" r="36.0680" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.7250"></circle>
+                    <circle cx="610.2059" cy="534.2725" r="58.3592" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.7000"></circle>
+                    <circle cx="588.2610" cy="505.6486" r="94.4272" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.6750"></circle>
+                    <circle cx="583.1585" cy="563.7844" r="152.7864" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.6500"></circle>
+                    <circle cx="652.7864" cy="500.0000" r="247.2136" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.6250"></circle>
+                    <circle cx="500.0000" cy="500.0000" r="400.0000" fill="none" stroke="var(--accent)" stroke-width="3" opacity="0.6000"></circle>
+                    <!-- riempimenti semi–trasparenti -->
+                    <circle cx="500.0000" cy="500.0000" r="400.0000" fill="var(--accent)" opacity="0.15"></circle>
+                    <circle cx="652.7864" cy="500.0000" r="247.2136" fill="#87c6d9" opacity="0.15"></circle>
+                    <circle cx="583.1585" cy="563.7844" r="152.7864" fill="var(--accent-2)" opacity="0.15"></circle>
+                    <circle cx="588.2610" cy="505.6486" r="94.4272" fill="#87c6d9" opacity="0.15"></circle>
+                    <circle cx="610.2059" cy="534.2725" r="58.3592" fill="var(--accent)" opacity="0.15"></circle>
+                    <circle cx="588.2554" cy="530.3894" r="36.0680" fill="#87c6d9" opacity="0.15"></circle>
+                    <circle cx="599.8798" cy="522.9953" r="22.2912" fill="var(--accent-2)" opacity="0.15"></circle>
+                    <circle cx="597.6692" cy="531.2178" r="13.7767" fill="#87c6d9" opacity="0.15"></circle>
+                    <circle cx="595.2439" cy="526.5478" r="8.5145" fill="var(--accent)" opacity="0.15"></circle>
+                    <circle cx="598.2988" cy="527.6635" r="5.2622" fill="#87c6d9" opacity="0.15"></circle>
+                    <circle cx="596.4408" cy="528.4304" r="3.2522" fill="var(--accent-2)" opacity="0.15"></circle>
+                    <circle cx="596.9674" cy="527.3052" r="2.0100" fill="#87c6d9" opacity="0.15"></circle>
+                    </g>
+                </svg>
+            </div>
+
+            <!--Animazione hash fibonacci-->
+
+            <div class="text-container">
+                <h1 class="Fibonacci-text" id="FibonacciText">
+                </h1>
+            </div>
 
         </main>
 
 
-        <script src="src/inject-toggle.js" defer></script>
+        <script src="src/inject-menu.js" defer></script>
+        <script src="src/FibonacciAnimation.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     </body>
 </html>

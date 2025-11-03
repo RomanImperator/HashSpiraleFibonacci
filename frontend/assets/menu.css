@@ -6,7 +6,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip-path: inset(50%);
   border: 0;
 }
 
@@ -20,7 +20,7 @@
   height: 3rem;
   border-radius: 999px;
   background-color: var(--card);
-  color: var(--text);
+  color: var(--accent);
   border: 1px solid var(--border);
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   position: relative;
@@ -30,7 +30,7 @@
 .theme-toggle > input {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  opacity: 0; /*ciò che lo rende invisibile*/
   cursor: pointer;
   margin: 0;
 }
@@ -49,17 +49,18 @@
 .icon-sun {
   opacity: 1;
   transform: scale(1) rotate(0deg);
+  color: currentColor;
 }
 
 /* luna inizialmente nascosta */
 .icon-moon {
   opacity: 0;
   transform: scale(0.5) rotate(-20deg);
-  color: #9924e7; /* blu chiaro brillante */
+  color: currentColor;
   filter: drop-shadow(0 0 5px rgba(150,170,255,0.5));
 }
 
-/* HOVER carino */
+/* HOVER con ombra */
 .theme-toggle:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
@@ -80,16 +81,68 @@
 
 /* Variabili tema */
 :root {
-  --bg: #ffffff;
-  --text: #0f1222;
-  --card: #f4f6fb;
-  --accent: #6b74ff;
-  --border: rgba(0,0,0,0.08);
+  --bg: #fffdf6;
+  --text: #0e0e0b;
+  --card: #fff8e1;
+  --accent: #b7791f;
+  --accent-2: #7c3e12;
+  --border: #e9dfc8;
+  --muted: #a58d69;
+  --ring: #f59e0b;
 }
 
 :root.dark {
   --bg: #0f1222;
-  --text: #e7eaf6;
+  --text: #f3e8c9;
+  --card: #1b1f33;
+  --accent: #fbbf24;
+  --accent-2: #f59e0b;
+  --border: #2a2f45;
+  --muted: #c8b78f;
+  --ring: #fbbf24;
+}
+
+/*Stile bottone*/
+
+button {
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  letter-spacing: 3px;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: --ring 0px 7px 29px 0px;
+}
+
+button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+/*Fine stile bottone*/
+
+.menu{
+    display: flex;              /* Allinea gli elementi in orizzontale */
+    justify-content: center;    /* Centra orizzontalmente */
+    gap: 20px;                  /* Spazio tra i bottoni */
+    position: fixed;            /* Posizionamento libero sulla pagina */
+    top: 20px;                  /* Distanza dal bordo superiore */
+    left: 50%;                  /* Posiziona il centro del div al centro della pagina */
+    transform: translateX(-50%);/* Corregge lo spostamento per centrare perfettamente */
 }
 
 /* applica colori di pagina */

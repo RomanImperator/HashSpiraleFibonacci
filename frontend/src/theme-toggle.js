@@ -1,22 +1,31 @@
-// app.js
+
+//Dichiariamo una mediately-invoked function expression (IIFE) per evitare di inquinare lo scope globale
+
 (() => {
   const STORAGE_KEY = "theme"; // "dark" | "light"
-  const checkbox = document.getElementById("theme-toggle");
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const checkbox = document.getElementById("theme-toggle"); //prende il valore di <input type="checkbox" id="theme-toggle" />
+  const media = window.matchMedia("(prefers-color-scheme: dark)"); //legge il tema preferito del sistema operativo
+
+  /* Funzione per ottenere il tema iniziale:
+     1) controlla se l'utente ha salvato una preferenza in localStorage
+     2) se non c'è, usa il tema preferito del sistema operativo 
+  */
 
   const getInitialTheme = () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === "dark" || saved === "light") return saved;
     return media.matches ? "dark" : "light";
   };
+  //-------------------------------------------------------------------
 
+  // Funzione per applicare il tema alla pagina
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
-    // toggle classe su <html>
-    document.documentElement.classList.toggle("dark", isDark);
-    document.documentElement.setAttribute("data-theme", theme);
-    // sincronizza lo stato dello switch (se presente)
-    if (checkbox) checkbox.checked = isDark;
+    
+    document.documentElement.classList.toggle("dark", isDark); // Aggiunge o rimuove la classe "dark" dall'elemento <html>
+    document.documentElement.setAttribute("data-theme", theme); // Imposta l'attributo data-theme su "dark" o "light"
+    
+    if (checkbox) checkbox.checked = isDark; 
   };
 
   const setTheme = (theme) => {
