@@ -1,5 +1,5 @@
 // trova il placeholder e inietta lì il componente HTML
-fetch("components/menu.html")
+fetch("../components/menu.html")
   .then(res => res.text())
   .then(markup => {
     const mountPoint = document.getElementById("theme-menu-mount");
@@ -35,7 +35,7 @@ fetch("components/menu.html")
     // adesso che il markup è stato inserito nel DOM,
     // posso attivare la logica del toggle
     const script = document.createElement("script");
-    script.src = "src/theme-toggle.js";
+    script.src = "../src/theme-toggle.js";
     script.defer = true;
     document.body.appendChild(script);
 
@@ -46,7 +46,7 @@ fetch("components/menu.html")
       title.setAttribute('role', 'button');
       title.setAttribute('tabindex', '0');
 
-      const go = () => (window.location.href = 'components/hash.html');
+      const go = () => (window.location.href = '../components/hash.html');
       title.addEventListener('click', go);
       title.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') go();
