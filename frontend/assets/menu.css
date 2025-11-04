@@ -89,6 +89,8 @@
   --border: #e9dfc8;
   --muted: #a58d69;
   --ring: #f59e0b;
+  --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
 }
 
 :root.dark {
@@ -100,6 +102,8 @@
   --border: #2a2f45;
   --muted: #c8b78f;
   --ring: #fbbf24;
+  --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
 }
 
 /*Stile bottone*/
@@ -126,7 +130,7 @@ button:hover {
 
 button:active {
   letter-spacing: 3px;
-  background-color: hsl(261deg 80% 48%);
+  background-color: var(--accent);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
   transform: translateY(10px);
@@ -150,4 +154,18 @@ html, body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    gap: 10px;
+    align-items: center;
+  }
+
+  button {
+    width: 80%;
+  }
 }
