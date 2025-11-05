@@ -18,7 +18,7 @@ fetch("../components/menu.html")
         if (window.innerWidth > 768) {
           // schermi grandi: adatta alla larghezza del menu
           const width = menuEl.getBoundingClientRect().width;
-          goldenContainer.style.width = `${width}+50px`;
+          goldenContainer.style.width = `${width + 50}px`;
         } else {
           // schermi piccoli: riempi quasi tutto lo schermo
           goldenContainer.style.width = "90%";
