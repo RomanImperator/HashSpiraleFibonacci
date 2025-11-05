@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (saved) textarea.value = saved;
 
   clearBtn.addEventListener('click', () => {
-    textarea.value = '';
+    textarea.value = " ";
     localStorage.removeItem(SAVED_KEY);
     status('Campo svuotato.');
   });
