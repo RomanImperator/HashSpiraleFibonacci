@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const textarea = document.getElementById('plaintext');
   const clearBtn = document.getElementById('clear');
   const statusEl = document.getElementById('status');
+  const resultEl = document.getElementById('result');
 
   // opzionale: ripristina ultimo input salvato localmente
   const SAVED_KEY = 'fibo_plaintext';
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (saved) textarea.value = saved;
 
   clearBtn.addEventListener('click', () => {
-    textarea.value = " ";
+    textarea.value = '';
     localStorage.removeItem(SAVED_KEY);
     status('Campo svuotato.');
   });
@@ -32,15 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({ plaintext }),
       });
 
-      if (!res.ok) {
-        const msg = await safeText(res);
-        throw new Error(msg || `HTTP ${res.status}`);
-      }
+      if (!res.ok) throw new Error(await safeText(res) || `HTTP ${res.status}`);
 
       const data = await res.json(); // es: { hash: "...", meta: {...} }
       status('Hash calcolato con successo.');
-      // TODO: qui puoi mostrare il risultato o navigare a una pagina di risultato
-      console.log('Risposta backend:', data);
+      resultEl.textContent = `hash(${JSON.stringify(plaintext)}) = ${data.hash} [${data.bits} bit]`;
+
     } catch (err) {
       // Finché il backend non esiste, passerai di qua.
       console.warn('[hash] backend non raggiungibile:', err);

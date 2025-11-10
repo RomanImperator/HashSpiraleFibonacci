@@ -1,55 +1,147 @@
-// trova il placeholder e inietta lì il componente HTML
-fetch("../components/menu.html")
-  .then(res => res.text())
-  .then(markup => {
-    const mountPoint = document.getElementById("theme-menu-mount");
-    mountPoint.innerHTML = markup;
+const currentScript = document.currentScript;
+const scriptDir = currentScript?.src ? new URL('.', currentScript.src) : new URL('./', window.location.href);
+const frontendRoot = new URL('..', scriptDir);
 
-    // Dopo che il menu è stato montato, adatta la larghezza del contenitore
-    // della spirale aurea (golden-container) alla larghezza del menu.
-    // Questa funzione misura la larghezza effettiva del menu e applica lo
-    // stesso valore come larghezza al div della spirale. Inoltre, si
-    // aggiorna automaticamente al ridimensionamento della finestra.
-    function updateGoldenWidth() {
-      const menuEl = mountPoint.querySelector('.menu');
-      const goldenContainer = document.querySelector('.golden-container');
+const resources = {
+  menu: new URL('components/menu.html', frontendRoot).href,
+  menuStyles: new URL('assets/menu.css', frontendRoot).href,
+  themeScript: new URL('src/theme-toggle.js', frontendRoot).href,
+  pages: {
+    home: new URL('index.html', frontendRoot).href,
+    project: new URL('components/project.html', frontendRoot).href,
+    about: new URL('components/about.html', frontendRoot).href,
+    hash: new URL('components/hash.html', frontendRoot).href,
+  },
+};
 
-      if (menuEl && goldenContainer) {
-        if (window.innerWidth > 768) {
-          // schermi grandi: adatta alla larghezza del menu
-          const width = menuEl.getBoundingClientRect().width;
-          goldenContainer.style.width = `${width + 50}px`;
-        } else {
-          // schermi piccoli: riempi quasi tutto lo schermo
-          goldenContainer.style.width = "90%";
-        }
-      }
-    }
+const mountPoint = document.getElementById('theme-menu-mount');
 
+if (!mountPoint) {
+  console.warn('[menu] mount point "theme-menu-mount" non trovato.');
+} else {
+  fetch(resources.menu)
+    .then((res) => {
+      if (!res.ok) throw new Error(`Fetch menu fallita: HTTP ${res.status}`);
+      return res.text();
+    })
+    .then((markup) => {
+      mountPoint.innerHTML = markup;
 
-    // Esegui l'impostazione iniziale e aggiorna in caso di resize.
-    updateGoldenWidth();
-    window.addEventListener('resize', updateGoldenWidth);
+      ensureMenuStyles();
+      attachMenuNavigation(mountPoint);
+      ensureThemeToggleScript();
 
-    // molto importante:
-    // adesso che il markup è stato inserito nel DOM,
-    // posso attivare la logica del toggle
-    const script = document.createElement("script");
-    script.src = "../src/theme-toggle.js";
-    script.defer = true;
-    document.body.appendChild(script);
+      // Adatta la larghezza del contenitore della spirale alla larghezza del menu.
+      updateGoldenWidth();
+      window.addEventListener('resize', updateGoldenWidth);
 
-    // Naviga alla pagina input quando clicchi sulla scritta
-    const title = document.getElementById('FibonacciText');
-    if (title) {
-      title.style.cursor = 'pointer';
-      title.setAttribute('role', 'button');
-      title.setAttribute('tabindex', '0');
+      wireTitleNavigation();
+    })
+    .catch((err) => console.error('[menu] caricamento fallito:', err));
+}
 
-      const go = () => (window.location.href = '../components/hash.html');
-      title.addEventListener('click', go);
-      title.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') go();
+function ensureMenuStyles() {
+  const linksToEnsure = [
+    {
+      rel: 'stylesheet',
+      href: resources.menuStyles,
+      dataset: { menuStyles: 'true' },
+    },
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      attributes: { crossorigin: 'anonymous' },
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;800&display=swap',
+    },
+  ];
+
+  linksToEnsure.forEach((item) => {
+    const normalized = new URL(item.href, window.location.href).href;
+    const exists = Array.from(document.querySelectorAll(`link[rel="${item.rel}"]`))
+      .some((linkEl) => linkEl.href === normalized);
+
+    if (exists) return;
+
+    const link = document.createElement('link');
+    link.rel = item.rel;
+    link.href = item.href;
+
+    if (item.attributes) {
+      Object.entries(item.attributes).forEach(([key, value]) => {
+        link.setAttribute(key, value);
       });
     }
-});
+
+    if (item.dataset) {
+      Object.entries(item.dataset).forEach(([key, value]) => {
+        link.dataset[key] = value;
+      });
+    }
+
+    document.head.appendChild(link);
+  });
+}
+
+function ensureThemeToggleScript() {
+  if (document.querySelector('script[data-theme-toggle="true"]')) return;
+
+  const script = document.createElement('script');
+  script.src = resources.themeScript;
+  script.defer = true;
+  script.dataset.themeToggle = 'true';
+  document.head.appendChild(script);
+}
+
+function attachMenuNavigation(root) {
+  const buttons = root.querySelectorAll('[data-route]');
+
+  buttons.forEach((btn) => {
+    const target = btn.getAttribute('data-route');
+    const href = resources.pages[target];
+    if (!href) return;
+
+    btn.addEventListener('click', () => {
+      window.location.href = href;
+    });
+  });
+}
+
+function wireTitleNavigation() {
+  const title = document.getElementById('FibonacciText');
+  if (!title) return;
+
+  title.style.cursor = 'pointer';
+  title.setAttribute('role', 'button');
+  title.setAttribute('tabindex', '0');
+
+  const go = () => {
+    window.location.href = resources.pages.hash;
+  };
+
+  title.addEventListener('click', go);
+  title.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') go();
+  });
+}
+
+function updateGoldenWidth() {
+  const menuEl = mountPoint?.querySelector('.menu');
+  const goldenContainer = document.querySelector('.golden-container');
+
+  if (!menuEl || !goldenContainer) return;
+
+  if (window.innerWidth > 768) {
+    const width = menuEl.getBoundingClientRect().width;
+    goldenContainer.style.width = `${width + 50}px`;
+  } else {
+    goldenContainer.style.width = '90%';
+  }
+}
