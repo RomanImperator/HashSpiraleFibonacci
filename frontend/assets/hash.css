@@ -57,3 +57,19 @@ textarea, input[type="text"] {
 .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .btn:hover { transform: translateY(-1px); }
 #status { font-size: .95rem; color: var(--muted); min-height: 1.2em; }
+
+
+.result-output {
+  margin-top: 1.5rem;
+}
+
+#result {
+  background: var(--card); 
+  border: 1px solid var(--border);
+  border-radius: 10px; 
+  padding: 1rem;
+
+  text-align: left;
+  white-space: pre-wrap;  
+  word-break: break-all; 
+}

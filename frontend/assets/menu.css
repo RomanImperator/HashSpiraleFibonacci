@@ -156,7 +156,7 @@ html, body {
   min-height: 100vh;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .menu {
     flex-direction: column;
     position: static;

@@ -32,7 +32,7 @@ if (!mountPoint) {
       ensureThemeToggleScript();
 
       // Adatta la larghezza del contenitore della spirale alla larghezza del menu.
-      updateGoldenWidth();
+      setTimeout(updateGoldenWidth, 1000); // dopo il rendering
       window.addEventListener('resize', updateGoldenWidth);
 
       wireTitleNavigation();
@@ -140,7 +140,7 @@ function updateGoldenWidth() {
 
   if (window.innerWidth > 768) {
     const width = menuEl.getBoundingClientRect().width;
-    goldenContainer.style.width = `${width + 50}px`;
+    goldenContainer.style.width = `${width}px`;
   } else {
     goldenContainer.style.width = '90%';
   }
