@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // salva comunque localmente per non perdere l’input
     localStorage.setItem(SAVED_KEY, plaintext);
 
-    // === Quando il backend Python sarà pronto, questo è già cablato ===
     try {
       const res = await fetch('/api/hash', {
         method: 'POST',
@@ -35,12 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) throw new Error(await safeText(res) || `HTTP ${res.status}`);
 
-      const data = await res.json(); // es: { hash: "...", meta: {...} }
+      const data = await res.json(); 
       status('Hash calcolato con successo.');
       resultEl.textContent = `hash(${JSON.stringify(plaintext)}) = ${data.hash} [${data.bits} bit]`;
 
     } catch (err) {
-      // Finché il backend non esiste, passerai di qua.
       console.warn('[hash] backend non raggiungibile:', err);
       status('Backend non raggiungibile. Test OK: input salvato localmente, pronto a essere inviato quando il backend sarà attivo.');
     }
