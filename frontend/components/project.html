@@ -1,18 +1,98 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fibonacci Hash – Project</title>
 
-    <link rel="stylesheet" href="../assets/index.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fibonacci Hash – Project</title>
 
-  </head>
+  <!-- <link rel="stylesheet" href="../assets/index.css" /> -->
+  <link rel="stylesheet" href="../assets/project.css" />
 
-  <body>
-    <div id="theme-menu-mount"></div>
+</head>
 
-    <script src="../src/inject-menu.js" defer></script>
-  </body>
+<body>
+  <div id="theme-menu-mount"></div>
+  <h1 style="font-size: 600%; text-align: center;" class="Fibonacci-text">IL NOSTRO PROGETTO</h1>
+  <p>L'obiettivo del progetto è mostrare una delle moltissime applicazioni della costante aurea (costante di fibonacci).
+    In particolare questo progetto riguarda l'ambito dell'informatica. <br>
+    In informatica la costante aurea è utilizzata per creare deglinalgoritmi di hashing molto efficienti. Vediamo nello
+    specifico cosa significa.
+  </p>
+  <h2>COSA È UN HASH</h2>
+  <p>
+    Un hash è un tipo di algoritmo <strong>pseudorandomico</strong> che prende un input di lunghezza
+    <strong>arbitraria</strong> e restituisce una
+    stringa di lunghezza <strong>fissa</strong>. <br>
+    Un algoritmo di hashing deve avere quattro caratteristiche:
+    <strong>
+      <ul>
+        <li>Unidirezionale</li>
+        <li>Deterministico</li>
+        <li>Caotico</li>
+        <li>Resistente alle collisioni</li>
+      </ul>
+    </strong>
+    Vediamo più nello specifico cosa significa. <br>
+    <img src="../assets/Cryptographic_Hash_Function.svg" alt="schema hash">
+    <br>
+  <h2>CARATTERISTICHE</h2><br>
+  Deve essere <strong>unidirezionale</strong>: data una stringa S0, risultato dell'operazione di hashing su un dato S1,
+  non ci deve essere modo di risalire a S1
+  anche conoscendo S0 e l'algoritmo di hashing. <br>
+  <strong>Deterministico</strong> vuol dire che dato lo stesso input l'algoritmo deve restituire lo stesso output, ma
+  deve allo stesso tempo
+  <strong>minimizzare le collisioni</strong>, cioè la probabilità che due input diversi diano lo stesso output. <br>
+  Infine la qualità più importante di un algoritmo di hashing è l' "<strong>imprevedibilità</strong>" del'output. <br>
+  Per prendere in prestito un termine dalla fisica un sistema "caotico" è un sistema in cui anche il cambiamento più
+  piccolo nelle condizioni iniziali cambia
+  completamente il risultato. Allo stesso modo in un buon hash il cambiamento anche di <strong>un solo bit</strong>
+  nell'input cambia completamente l'ouput.
+  </p>
+  <br>
+  <h2>UTILIZZO</h2>
+  <p>
+    Le funzioni di hashing hanno due utilizzi principali:
+    <strong>
+      <ul>
+        <li>Crittografia</li>
+        <li>Hash tables</li>
+      </ul>
+    </strong>
+    <br>
+    Per essere coincisi possiamo dire che vengono usate in <strong>crittografia</strong> per la verifica
+    dell'<strong>autenticità</strong> e la firma digitale. <br>
+    Le <strong>hash tables</strong> sono invece un modo di organizzare dati con delle coppie
+    <strong>chiave-valore</strong> in cui l'hash della chiave
+    corrisponde alla posizione del valore nella hashtable.
+    Questo permette di cercare dati con una complessità temporale media di O(1).
+  </p>
+
+  <h2>FIBONACCI HASHING</h2>
+  <p>
+    Per "Fibonacci hashing" si intende un tipo di hashing in cui la funzione usa la costante aurea (derivata dalla
+    sequenza di fibonacci) per
+    "randomizzare" l'input.
+    In particolare il nostro algoritmo usa una funzione di multiplicative hashing di tipo:
+    <br> <br>
+    <strong style="padding-left: 5%;">h(k) = M * (k*A % 1)</strong>
+    <br> <br>
+    Dove: <br>
+    <strong>h(k)</strong>: l'hash della chiave. <br>
+    <strong>M</strong>: la dimensione dell'array. <br>
+    <strong>k</strong>: la chiave (int). <br>
+    <strong>A</strong>: Una costante (costante aurea in questo caso). <br>
+  </p>
+  <br>
+  <br>
+  <hr>
+  Fonti:
+  <br><a href="https://courses.cs.umbc.edu/undergraduate/341/fall99/frey/Lectures/Hashing/hashFunc.html">University of
+    Maryland Baltimore County (UMBC)</a>
+  <br><a href="https://youtu.be/5MiMK45gkTY?si=vs5w2bCETa06P3TS">RareSkills - How the MD5 Hash function works</a>
+  <br><a href="https://www.tencentcloud.com/techpedia/105669">tencentcloud - What are the characteristics of a hash
+    function</a>
+  <script src="../src/inject-menu.js" defer></script>
+</body>
 
 </html>

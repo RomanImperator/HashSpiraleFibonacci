@@ -32,7 +32,7 @@ if (!mountPoint) {
       ensureThemeToggleScript();
 
       // Adatta la larghezza del contenitore della spirale alla larghezza del menu.
-      setTimeout(updateGoldenWidth, 1000); // dopo il rendering
+      setTimeout(updateGoldenWidth, 1000);
       window.addEventListener('resize', updateGoldenWidth);
 
       wireTitleNavigation();

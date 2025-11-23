@@ -1,0 +1,129 @@
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    line-height: 1.8;
+    color: var(--text);
+    text-align: center;
+}
+
+/* Typography */
+h1.Fibonacci-text {
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+    /* Override inline style if possible, or just enhance */
+    margin-bottom: 2rem;
+    color: var(--accent);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-family: var(--font-serif);
+    color: var(--accent);
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+p {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+strong {
+    color: var(--accent-2);
+    font-weight: 700;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    justify-content: center;
+    gap: 1rem;
+}
+
+li {
+    background-color: var(--card);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-weight: 600;
+    color: var(--accent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: var(--accent);
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    display: block;
+    border: 1px solid var(--border);
+}
+
+/* Math/Code blocks */
+strong[style*="padding-left"] {
+    display: block;
+    background-color: var(--card);
+    padding: 2rem !important;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Sources section */
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 4rem 0 2rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 2rem 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    strong[style*="padding-left"] {
+        font-size: 1.1rem;
+        padding: 1rem !important;
+    }
+}
