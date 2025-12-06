@@ -53,7 +53,7 @@ A captivating project that intertwines hashing algorithms, golden spirals, and t
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository_url>
+    git clone [<repository_url>](https://github.com/RomanImperator/HashSpiraleFibonacci.git)
     cd HashSpiraleFibonacci
     ```
 
