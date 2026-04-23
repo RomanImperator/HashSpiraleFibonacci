@@ -126,19 +126,6 @@ HashSpiraleFibonacci/
 └── ...
 ```
 
-## 📸 Screenshots
-
-(Add screenshots of the application in action here)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and commit them with descriptive messages.
-4.  Submit a pull request.
-
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE).
@@ -150,5 +137,3 @@ If you have any questions or suggestions, feel free to contact me at [your_email
 ## 💖 Thanks Message
 
 Thank you for checking out the HashSpiraleFibonacci project! I hope you find it interesting and useful. Your feedback and contributions are highly appreciated.
-
-This is written by [readme.ai](https://readme-generator-phi.vercel.app/).
